@@ -29,6 +29,7 @@ void main() {
         year: '2010',
         imdbID: 'tt1375666',
         poster: 'N/A',
+        isFavorite: false,
       )
     ];
 
@@ -55,7 +56,8 @@ void main() {
             title: 'Inception',
             year: '2010',
             imdbID: 'tt1375666',
-            poster: 'N/A'),
+            poster: 'N/A',
+        isFavorite: false),
       ];
 
       // Act

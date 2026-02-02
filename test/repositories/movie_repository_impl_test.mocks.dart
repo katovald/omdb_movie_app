@@ -6,6 +6,8 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:omdb_movie_app/data/datasources/favorites_local_data_source.dart'
+    as _i6;
 import 'package:omdb_movie_app/data/datasources/movie_remote_data_source.dart'
     as _i3;
 import 'package:omdb_movie_app/data/models/movie_details_model.dart' as _i2;
@@ -70,4 +72,52 @@ class MockMovieRemoteDataSource extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.MovieDetailsModel>);
+}
+
+/// A class which mocks [FavoritesLocalDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFavoritesLocalDataSource extends _i1.Mock
+    implements _i6.FavoritesLocalDataSource {
+  MockFavoritesLocalDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<void> addFavorite(String? movieId) => (super.noSuchMethod(
+        Invocation.method(
+          #addFavorite,
+          [movieId],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> removeFavorite(String? movieId) => (super.noSuchMethod(
+        Invocation.method(
+          #removeFavorite,
+          [movieId],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<bool> isFavorite(String? movieId) => (super.noSuchMethod(
+        Invocation.method(
+          #isFavorite,
+          [movieId],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+
+  @override
+  _i4.Future<List<String>> getAllFavorites() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllFavorites,
+          [],
+        ),
+        returnValue: _i4.Future<List<String>>.value(<String>[]),
+      ) as _i4.Future<List<String>>);
 }

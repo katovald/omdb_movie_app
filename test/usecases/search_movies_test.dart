@@ -21,7 +21,7 @@ void main() {
   test('should get a list of movies from the repository', () async {
     final tMovies = [
       Movie(
-          title: 'Inception', year: '2010', imdbID: 'tt1375666', poster: 'N/A'),
+          title: 'Inception', year: '2010', imdbID: 'tt1375666', poster: 'N/A', isFavorite: false),
     ];
 
     when(mockMovieRepository.searchMovies(any))

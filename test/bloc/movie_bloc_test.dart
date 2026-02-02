@@ -37,7 +37,7 @@ void main() {
   group('SearchMoviesEvent', () {
     final tMovieList = [
       Movie(
-          title: 'Inception', year: '2010', imdbID: 'tt1375666', poster: 'N/A'),
+          title: 'Inception', year: '2010', imdbID: 'tt1375666', poster: 'N/A', isFavorite: false),
     ];
 
     blocTest<MovieBloc, MovieState>(

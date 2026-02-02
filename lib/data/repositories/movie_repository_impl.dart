@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:omdb_movie_app/data/datasources/favorites_local_data_source.dart';
 
 import '../../core/error/exceptions.dart';
 import '../../core/error/failures.dart';
@@ -11,20 +12,24 @@ import '../datasources/movie_remote_data_source.dart';
 /// Communicates with the remote data source and maps data to domain entities.
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
+  final FavoritesLocalDataSource favoritesLocalDataSource;
 
-  MovieRepositoryImpl({required this.remoteDataSource});
+  MovieRepositoryImpl(
+      {required this.remoteDataSource, required this.favoritesLocalDataSource});
 
   /// Searches for movies and maps MovieModel data to Movie entities.
   @override
   Future<Either<Failure, List<Movie>>> searchMovies(String query) async {
     try {
       final movieModels = await remoteDataSource.searchMovies(query);
+      final favoritesIds = await favoritesLocalDataSource.getAllFavorites();
       final movies = movieModels
           .map((model) => Movie(
                 title: model.title,
                 year: model.year,
                 imdbID: model.imdbID,
                 poster: model.poster,
+                isFavorite: favoritesIds.contains(model.imdbID),
               ))
           .toList();
       return Right(movies);

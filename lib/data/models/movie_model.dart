@@ -8,7 +8,8 @@ class MovieModel extends Movie {
     required String year,
     required String imdbID,
     required String poster,
-  }) : super(title: title, year: year, imdbID: imdbID, poster: poster);
+    required bool isFavorite,
+  }) : super(title: title, year: year, imdbID: imdbID, poster: poster, isFavorite: isFavorite);
 
   /// Factory method to create a MovieModel from a JSON map.
   factory MovieModel.fromJson(Map<String, dynamic> json) {
@@ -16,7 +17,7 @@ class MovieModel extends Movie {
       title: json['Title'],
       year: json['Year'],
       imdbID: json['imdbID'],
-      poster: json['Poster'],
+      poster: json['Poster'], isFavorite: false,
     );
   }
 }

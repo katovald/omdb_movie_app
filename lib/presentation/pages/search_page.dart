@@ -70,11 +70,16 @@ class SearchPage extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => BlocProvider.value(
                                 value: context.read<MovieBloc>(),
-                                child: DetailsPage(movieId: movie.imdbID),
+                                child: DetailsPage(
+                                  movieId: movie.imdbID,
+                                  posterUrl: movie.poster,
+                                  isFavorite: movie.isFavorite,
+                                ),
                               ),
                             ),
-                          );
+                          ).then((_) => _searchController.clear());
                         },
+                        trailing: Icon(movie.isFavorite ? Icons.favorite : Icons.favorite_border),
                       );
                     },
                   );
